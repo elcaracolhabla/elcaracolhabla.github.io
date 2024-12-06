@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Caracol Habla: Guía a la Religión Yoruba</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="welcome-title">Bienvenido a la Religión Yoruba</h1>
+    <p id="welcome-text">Conéctate con la espiritualidad, tradición y cultura del pueblo Yoruba.</p>
+
+    <!-- Selector de idioma -->
+    <div>
+        <label for="language-selector">Selecciona idioma:</label>
+        <select id="language-selector" onchange="changeLanguage()">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="ru">Русский</option>
+        </select>
+    </div>
+
+    <!-- Publicar contenido -->
+    <div class="form-section">
+        <h2 id="publish-title">Publicar Contenido</h2>
+        <label id="post-title-label" for="post-title">Título:</label>
+        <input id="post-title" type="text">
+        <label id="post-content-label" for="post-content">Contenido:</label>
+        <textarea id="post-content"></textarea>
+        <button id="publish-button">Publicar</button>
+    </div>
+
+    <!-- Inicio de sesión -->
+    <div class="form-section">
+        <h2 id="login-title">Inicio de Sesión de Administrador</h2>
+        <label id="admin-username-label" for="admin-username">Usuario:</label>
+        <input id="admin-username" type="text">
+        <label id="admin-password-label" for="admin-password">Contraseña:</label>
+        <input id="admin-password" type="password">
+        <button id="admin-login-button">Iniciar Sesión</button>
+    </div>
+
+    <!-- Contacto -->
+    <div class="form-section">
+        <h2 id="contact-title">Contacto</h2>
+        <p id="contact-question">¿Tienes alguna pregunta sobre la religión Yoruba?</p>
+        <label id="name-label" for="contact-name">Nombre:</label>
+        <input id="contact-name" type="text">
+        <label id="email-label" for="contact-email">Correo Electrónico:</label>
+        <input id="contact-email" type="email">
+        <label id="message-label" for="contact-message">Mensaje:</label>
+        <textarea id="contact-message"></textarea>
+        <button id="send-button">Enviar mensaje</button>
+        <p id="whatsapp-contact">También puedes contactarme a través de WhatsApp o redes sociales.</p>
+        <p id="email-contact">Correo electrónico: <a href="mailto:elcaracolhabla@gmail.com">elcaracolhabla@gmail.com</a></p>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                welcomeTitle: "Bienvenido a la Religión Yoruba",
+                welcomeText: "Conéctate con la espiritualidad, tradición y cultura del pueblo Yoruba.",
+                publishTitle: "Publicar Contenido",
+                postTitle: "Título:",
+                postContent: "Contenido:",
+                publishButton: "Publicar",
+                adminLoginTitle: "Inicio de Sesión de Administrador",
+                adminUserLabel: "Usuario:",
+                adminPasswordLabel: "Contraseña:",
+                adminLoginButton: "Iniciar Sesión",
+                contactTitle: "Contacto",
+                contactQuestion: "¿Tienes alguna pregunta sobre la religión Yoruba?",
+                nameLabel: "Nombre:",
+                emailLabel: "Correo Electrónico:",
+                messageLabel: "Mensaje:",
+                sendButton: "Enviar mensaje",
+                whatsappContact: "También puedes contactarme a través de WhatsApp o redes sociales.",
+                emailContact: "Correo electrónico:"
+            },
+            en: {
+                welcomeTitle: "Welcome to the Yoruba Religion",
+                welcomeText: "Connect with the spirituality, tradition, and culture of the Yoruba people.",
+                publishTitle: "Publish Content",
+                postTitle: "Title:",
+                postContent: "Content:",
+                publishButton: "Publish",
+                adminLoginTitle: "Administrator Login",
+                adminUserLabel: "Username:",
+                adminPasswordLabel: "Password:",
+                adminLoginButton: "Login",
+                contactTitle: "Contact",
+                contactQuestion: "Do you have any questions about the Yoruba religion?",
+                nameLabel: "Name:",
+                emailLabel: "Email:",
+                messageLabel: "Message:",
+                sendButton: "Send Message",
+                whatsappContact: "You can also contact me via WhatsApp or social media.",
+                emailContact: "Email:"
+            },
+            de: {
+                welcomeTitle: "Willkommen in der Yoruba-Religion",
+                welcomeText: "Verbinden Sie sich mit der Spiritualität, Tradition und Kultur der Yoruba.",
+                publishTitle: "Inhalt Veröffentlichen",
+                postTitle: "Titel:",
+                postContent: "Inhalt:",
+                publishButton: "Veröffentlichen",
+                adminLoginTitle: "Administrator-Login",
+                adminUserLabel: "Benutzername:",
+                adminPasswordLabel: "Passwort:",
+                adminLoginButton: "Anmelden",
+                contactTitle: "Kontakt",
+                contactQuestion: "Haben Sie Fragen zur Yoruba-Religion?",
+                nameLabel: "Name:",
+                emailLabel: "E-Mail:",
+                messageLabel: "Nachricht:",
+                sendButton: "Nachricht Senden",
+                whatsappContact: "Sie können mich auch über WhatsApp oder soziale Medien kontaktieren.",
+                emailContact: "E-Mail:"
+            },
+            ru: {
+                welcomeTitle: "Добро пожаловать в религию Йоруба",
+                welcomeText: "Познайте духовность, традиции и культуру народа Йоруба.",
+                publishTitle: "Опубликовать Контент",
+                postTitle: "Заголовок:",
+                postContent: "Содержание:",
+                publishButton: "Опубликовать",
+                adminLoginTitle: "Вход для администратора",
+                adminUserLabel: "Имя пользователя:",
+                adminPasswordLabel: "Пароль:",
+                adminLoginButton: "Войти",
+                contactTitle: "Контакт",
+                contactQuestion: "У вас есть вопросы о религии Йоруба?",
+                nameLabel: "Имя:",
+                emailLabel: "Электронная почта:",
+                messageLabel: "Сообщение:",
+                sendButton: "Отправить сообщение",
+                whatsappContact: "Вы также можете связаться со мной через WhatsApp или социальные сети.",
+                emailContact: "Электронная почта:"
+            }
+        };
+
+        function changeLanguage() {
+            const lang = document.getElementById("language-selector").value;
+            const text = translations[lang];
+
+            document.getElementById("welcome-title").textContent = text.welcomeTitle;
+            document.getElementById("welcome-text").textContent = text.welcomeText;
+
+            document.getElementById("publish-title").textContent = text.publishTitle;
+            document.getElementById("post-title-label").textContent = text.postTitle;
+            document.getElementById("post-content-label").textContent = text.postContent;
+            document.getElementById("publish-button").textContent = text.publishButton;
+
+            document.getElementById("login-title").textContent = text.adminLoginTitle;
+            document.getElementById("admin-username-label").textContent = text.adminUserLabel;
+            document.getElementById("admin-password-label").textContent = text.adminPasswordLabel;
+            document.getElementById("admin-login-button").textContent = text.adminLoginButton;
+
+            document.getElementById("contact-title").textContent = text.contactTitle;
+            document.getElementById("contact-question").textContent = text.contactQuestion;
+            document.getElementById("name-label").textContent = text.nameLabel;
+            document.getElementById("email-label").textContent = text.emailLabel;
+            document.getElementById("message-label").textContent = text.messageLabel;
+            document.getElementById("send-button").textContent = text.sendButton;
+            document.getElementById("whatsapp-contact").textContent = text.whatsappContact;
+            document.getElementById("email-contact").innerHTML = `${text.emailContact} <a href="mailto:elcaracolhabla@gmail.com">elcaracolhabla@gmail.com</a>`;
+        }
+    </script>
+</body>
+</html>
